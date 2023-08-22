@@ -1,5 +1,5 @@
 # Use an official Python runtime as the parent image
-FROM python:3.8-slim
+FROM python:3.8
 
 # Set the working directory in the container to /app
 WORKDIR /app
@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . /app
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 # Set the `STREAMLIT_SERVER_PORT` environment variable
 ENV STREAMLIT_SERVER_PORT=8502

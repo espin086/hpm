@@ -3,15 +3,38 @@
 ## 🚀 Try the Application Live!
 [**Launch the AISL Weekly Report Generator**](https://aisl-weekly-updates.streamlit.app/)
 
-This tool is designed for the Principal Cloud Architect to create succinct weekly reports. By summarizing accomplishments, challenges, and next steps, the app aids in presenting clear and concise information for both peers and managers.
+This tool is designed to create succinct weekly reports from rough notes. By summarizing accomplishments, challenges, and next steps, the app aids in presenting clear and concise information for both peers and managers.
+
+
+## Examples:
+
+👎🏽 **Turns Unprofessional Notes**
+![bad notes](./images/unprofessional_notes.png)
+
+
+👍🏽 **Into Professional Executive Summaries**
+
+![good notes](./images/summarized_notes.png)
+
+
+
 
 ## Features:
 
 - **User-friendly Interface**: Simply input your weekly accomplishments, challenges, and planned next steps.
+
+![ui 1](./images/hpm_ui_1.png)
+
+![ui 2](./images/hpm_ui_2.png)
+
   
 - **GPT-3.5-Turbo Powered Summaries**: Utilizes one of OpenAI's advanced models, `gpt-3.5-turbo`, to generate executive summaries based on your input.
 
 - **Formatted Presentation**: Your summaries are presented in a clear, professional manner with the ability to emphasize key points using bold and highlighting, prioritizing the business benefits of technical solutions.
+
+
+
+
 
 ## Usage:
 
@@ -42,6 +65,17 @@ This tool is designed for the Principal Cloud Architect to create succinct weekl
     org = xxxxxxxxxxxxxxxxx
     key = xxxxxxxxxxxxxxxxx
 
+5. Build the Docker image from the repository:
+
+    ```bash
+    docker build -t streamlit-weekly-todo . 
+
+6. Run the docker image
+    ```bash
+    docker run -d -p 8502:8502 streamlit-weekly-todo
+
+
+Then you will be able to open up your container through Docker Desktip and click on the link to the port to access the application.
 
 
 ## Dependencies:

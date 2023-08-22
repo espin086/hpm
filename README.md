@@ -1,4 +1,4 @@
-# Weekly Report Generator
+# GPT Based - Weekly Report Generator
 
 ## 🚀 Try the Application Live!
 [**Launch the AISL Weekly Report Generator**](https://aisl-weekly-updates.streamlit.app/)

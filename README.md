@@ -1,5 +1,8 @@
 # Weekly Report Generator
 
+## 🚀 Try the Application Live!
+[**Launch the AISL Weekly Report Generator**](https://aisl-weekly-updates.streamlit.app/)
+
 This tool is designed for the Principal Cloud Architect to create succinct weekly reports. By summarizing accomplishments, challenges, and next steps, the app aids in presenting clear and concise information for both peers and managers.
 
 ## Features:

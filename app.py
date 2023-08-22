@@ -11,7 +11,7 @@ MODEL = "gpt-3.5-turbo"
 ####################################
 
 # Title
-st.title("AISL - Weekly Report")
+st.title("Weekly Report")
 
 
 # Separator

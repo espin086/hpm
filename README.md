@@ -24,6 +24,26 @@ This tool is designed for the Principal Cloud Architect to create succinct weekl
 
 3. **Generate Summary**: Once all details are inputted, click the "Summarize" button to get your executive summary.
 
+
+## Setup Locally with Docker:
+1. Clone this repository to your local machine
+2. Go into repo and create your OPENAI secrets 
+
+    ```bash
+    mkdir .streamlit
+
+3. Create a .toml file with your OPENAI keys
+    ```bash
+    touch secrets.toml
+
+4. Add your OpenAI API Keys to this file (triple check that your .gitignore moves this file from any commits you do to to protect your information):
+    ```bash
+    [openai]
+    org = xxxxxxxxxxxxxxxxx
+    key = xxxxxxxxxxxxxxxxx
+
+
+
 ## Dependencies:
 
 - Streamlit: For the web interface.

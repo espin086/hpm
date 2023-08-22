@@ -15,7 +15,7 @@ This tool is designed for the Principal Cloud Architect to create succinct weekl
 
 ## Usage:
 
-1. **Start the App**: Ensure you have all the dependencies installed and run the Streamlit app.
+1. **Start the App**: Ensure you have all the dependencies installed and run the Streamlit app locally after cloing this repo or [use this link to try the app on the web](https://aisl-weekly-updates.streamlit.app/).
 
 2. **Input Details**:
     - **Accomplishments**: Describe what you achieved over the week.
@@ -29,7 +29,7 @@ This tool is designed for the Principal Cloud Architect to create succinct weekl
 - Streamlit: For the web interface.
 - OpenAI Python client: For integrating with the GPT-3.5-Turbo model.
 
-## Setup:
+## Setup Locally with PIP:
 
 1. Ensure you have Python installed on your system.
 2. Clone this repository.
@@ -37,3 +37,8 @@ This tool is designed for the Principal Cloud Architect to create succinct weekl
 
    ```bash
    pip3 install -r requirements.txt
+
+4. Run the application locally:
+
+    ```bash
+    streamlit run app.py

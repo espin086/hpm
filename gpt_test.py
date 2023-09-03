@@ -1,8 +1,15 @@
+"""
+
+Test the GPT-3 API
+"""
+
 from gpt import generate_completion
-import pytest
 
 
 def test_generate_completion():
+    """
+    Function should return a string
+    """
     # Arrange
     model = "gpt-3.5-turbo"
     role = """You are a Principal Cloud Architect who is writing a weekly report...

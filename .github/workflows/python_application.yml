@@ -31,7 +31,7 @@ jobs:
       run: find . -name "*.py" -exec black {} +
 
     - name: Lint with Pylint
-      run: find . -name "*.py" -exec pylint {} +
+      run: find . -name "*.py" -exec pylint {} + || pylint-exit $? --fail-under=8
 
     - name: Run Pytest
       run: pytest

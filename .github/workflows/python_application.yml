@@ -31,7 +31,14 @@ jobs:
       run: find . -name "*.py" -exec black {} +
 
     - name: Lint with Pylint
-      run: find . -name "*.py" -exec pylint {} + || pylint-exit $? --fail-under=8
+      run: |
+        pylint_output=$(find . -name "*.py" -exec pylint {} + 2>&1)
+        pylint_score=$(echo "$pylint_output" | grep -oP "rated at \K([0-9]+\.[0-9]+)")
+        echo "$pylint_output"
+        if (( $(echo "$pylint_score < 8" | bc -l) )); then
+          echo "Pylint score $pylint_score is less than 8. Failing."
+          exit 1
+        fi
 
     - name: Run Pytest
       run: pytest

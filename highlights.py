@@ -1,8 +1,19 @@
+"""
+This is a Streamlit app that generates a weekly report for AISL.
+
+
+"""
+
 import streamlit as st
 
 from gpt import generate_completion
 
-ROLE = "You are a Principal Cloud Architect who is writing a weekly report. You need to summarize your accomplishments, challenges, and next steps. The audience are peer and managers who are interested in your work. It is ok to expand on the business benefits of your technical solutions, prefer you do that at the beginning of each bullet point. Use bold and highlighting as needed to stress key words."
+ROLE = """You are a Principal Cloud Architect who is writing a weekly report.
+You need to summarize your accomplishments, challenges, and next steps. 
+The audience are peer and managers who are interested in your work. 
+It is ok to expand on the business benefits of your technical solutions, 
+prefer you do that at the beginning of each bullet point. 
+Use bold and highlighting as needed to stress key words."""
 MODEL = "gpt-3.5-turbo"
 
 ####################################

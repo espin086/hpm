@@ -1,3 +1,10 @@
+"""
+
+This is a GPT text generation module. It is used to generate text based on a prompt.
+
+"""
+
+
 import openai
 import streamlit as st
 
@@ -6,6 +13,9 @@ openai.organization = st.secrets["openai"]["org"]
 
 
 def generate_completion(model, role, prompt):
+    """
+    This function generates text based on a prompt.
+    """
     completion = openai.ChatCompletion.create(
         model=model,
         messages=[

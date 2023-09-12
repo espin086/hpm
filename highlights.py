@@ -17,7 +17,7 @@ MODEL = "gpt-3.5-turbo"
 
 def render_title():
     """Render the title and a separator in the Streamlit app."""
-    st.title("AISL - Weekly Report")
+    st.title("Weekly Report Generator")
     st.write("---")
 
 

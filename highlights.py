@@ -5,20 +5,36 @@ import streamlit as st
 
 from gpt import generate_completion
 
-ROLE = """You are a Principal Cloud Architect who is writing a weekly report.
-You need to summarize your accomplishments, challenges, and next steps.
-The audience are peer and managers who are interested in your work.
-It is ok to expand on the business benefits of your technical solutions,
-prefer you do that at the beginning of each bullet point.
-Use bold and highlighting as needed to stress key words."""
-
 MODEL = "gpt-3.5-turbo"
 
+HOW_TO_SUMMARIZE = """You need to summarize your accomplishments, challenges, and next steps.
+The audience are peer and managers who are interested in your work.
+It is ok to expand on the business benefits of your accomplishments,
+prefer you do that at the beginning of each bullet point.
+Any challenges or blockers should be addressed and next steps should be recommended.
+Use bold and highlighting as needed to stress key words. You must have 3 sections in your response:
 
-def render_title():
+Accomplishments:
+
+
+Challenges/Blockers:
+
+Next Steps
+
+
+"""
+
+
+def render_title(role):
     """Render the title and a separator in the Streamlit app."""
     st.title("Weekly Report Generator")
     st.write("---")
+    st.write(f"Role: {role}")  # Display the user-selected role
+
+
+def render_role_input():
+    """Render a text input for the user to set their role."""
+    return st.text_input("Enter your role:", "Principal Cloud Architect")
 
 
 def render_text_area(section_title, help_text):
@@ -59,7 +75,8 @@ def get_summary(model, role, prompt):
 
 def main():
     """Main function to render the Streamlit app."""
-    render_title()
+    user_role = render_role_input()  # Get the user's selected role
+    render_title(user_role)  # Pass the user's role to the title function
 
     st.header("Accomplishments")
     accomplishments_input = render_text_area(
@@ -76,11 +93,13 @@ def main():
     st.header("Next Steps")
     next_steps_input = render_text_area("Next Steps", "Enter your planned next steps.")
 
-    prompt = accomplishments_input + challenges_input + next_steps_input
+    prompt = (
+        HOW_TO_SUMMARIZE + accomplishments_input + challenges_input + next_steps_input
+    )
 
     if render_summary_button():
-        summary = get_summary(MODEL, ROLE, prompt)
-        st.write("Executive Summary", summary)
+        summary = get_summary(MODEL, user_role, prompt)
+        st.write(summary)
 
 
 if __name__ == "__main__":

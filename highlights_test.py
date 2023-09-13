@@ -22,9 +22,9 @@ class TestHighlights(unittest.TestCase):
     @patch("highlights.st.write")
     def test_render_title(self, mock_write, mock_title):
         """Test that the title and horizontal line are rendered."""
-        render_title()
+        render_title("---")
         mock_title.assert_called_with("Weekly Report Generator")
-        mock_write.assert_called_with("---")
+        mock_write.assert_called_with("Role: ---")
 
     @patch("highlights.st.text_area")
     def test_render_text_area(self, mock_text_area):

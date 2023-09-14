@@ -1,38 +1,42 @@
-"""This module is a Streamlit app for generating a weekly report for AISL.
-"""
-
 import streamlit as st
 
 from gpt import generate_completion
 
 MODEL = "gpt-3.5-turbo"
 
-HOW_TO_SUMMARIZE = """You need to summarize your accomplishments, challenges, and next steps.
-The audience are peer and managers who are interested in your work.
-It is ok to expand on the business benefits of your accomplishments,
-prefer you do that at the beginning of each bullet point.
-Any challenges or blockers should be addressed and next steps should be recommended.
-Use bold and highlighting as needed to stress key words. You must have 3 sections in your response:
+HOW_TO_SUMMARIZE = """ You need to provide an update for a daily stand-up. 
+This update should be no longer than 15 minutes in the agile/scrum methodology.
 
-Accomplishments:
+It should accomplish the following:
 
-Challenges/Blockers:
+- show how busy you are
+- show what you are working on
+- show what you have accomplished
+- show what you are planning to do next
+- show what you need help with
 
-Next Steps
+Formatting Guide:
+
+- your response will be in three sections: accomplishments, plans, blockers
+- use bold for the section headers
+- use bullet points for each section
+- start each bullet point with a verb and use the present tense, plus use the active voice and bold the verb
+
+Example: Joined mutliple table and quality checked the ETL pipeline to ensure the data is accurate and complete.
 
 """
 
 
 def render_title(role):
     """Render the title and a separator in the Streamlit app."""
-    st.title("Weekly Report Generator")
+    st.title("Daily Technical Update")
     st.write("---")
     st.write(f"Role: {role}")  # Display the user-selected role
 
 
 def render_role_input():
     """Render a text input for the user to set their role."""
-    return st.text_input("Enter your role:", "Principal Cloud Architect")
+    return st.text_input("Enter your role:", "Software Engineer")
 
 
 def render_text_area(section_title, help_text):
@@ -76,24 +80,29 @@ def main():
     user_role = render_role_input()  # Get the user's selected role
     render_title(user_role)  # Pass the user's role to the title function
 
-    st.header("Accomplishments")
+    st.header("What did you do today?")
     accomplishments_input = render_text_area(
-        "Accomplishments", "Enter your accomplishments for the week."
+        "What did you do today?", "Enter your daily accomplishments."
     )
     st.write("---")
 
-    st.header("Challenges/Blockers")
-    challenges_input = render_text_area(
-        "Challenges/Blockers", "Enter your challenges or blockers for the week."
+    st.header("What will you do tomorrow?")
+    todo_input = render_text_area(
+        "What will you do tomorrow?", "Enter tomorrow's plans"
     )
     st.write("---")
 
-    st.header("Next Steps")
-    next_steps_input = render_text_area("Next Steps", "Enter your planned next steps.")
-
-    prompt = (
-        HOW_TO_SUMMARIZE + accomplishments_input + challenges_input + next_steps_input
+    st.header("Any challenges/blockers for you?")
+    blocked_input = render_text_area(
+        "What is blocking you?", "What stands in your way?"
     )
+    st.write("---")
+
+    prompt = f"""Here is your task {HOW_TO_SUMMARIZE}. 
+    Here are the accompolishments: {accomplishments_input}. 
+    Here are the plans for tomorrow: {todo_input}. 
+    Here are the blockers: {blocked_input}
+    """
 
     if render_summary_button():
         summary = get_summary(MODEL, user_role, prompt)

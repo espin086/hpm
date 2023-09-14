@@ -25,8 +25,13 @@ Next Steps
 
 def render_title(role):
     """Render the title and a separator in the Streamlit app."""
-    st.title("Weekly Report Generator")
-    st.write("---")
+    st.title("🌟**The App has a New URL and Cool New Features added .*")
+    st.subheader("📧 Allowing you to write emails and Slack responses.")
+    st.write("🔗 Go this URL to access the new app: https://highlights.streamlit.app/")
+    st.write(
+        "THIS APP WILL GO AWAY SOON. PLEASE USE THE NEW APP, save in your bookmarks."
+    )
+
     st.write(f"Role: {role}")  # Display the user-selected role
 
 

@@ -7,4 +7,4 @@ class UserConfig:
     def __init__(self):
         self.name = "JJ Espinoza"
         self.job_title = "Machine Learning Engineer"
-        self.company = "AI Solutions Lab"
+        self.company = "USAA"

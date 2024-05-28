@@ -72,8 +72,6 @@ def get_summary(model, role, prompt):
 
 def main():
     """Main function to render the Streamlit app."""
-    user_role = render_role_input()  # Get the user's selected role
-    render_title(user_role)  # Pass the user's role to the title function
 
     st.header("Accomplishments")
     accomplishments_input = render_text_area(
@@ -95,7 +93,7 @@ def main():
     )
 
     if render_summary_button():
-        summary = get_summary(config.GPT_MODEL, user_role, prompt)
+        summary = get_summary(config.GPT_MODEL, config.UserConfig().job_title, prompt)
         st.write(summary)
 
 

@@ -14,7 +14,7 @@ def render_title():
 
 def render_slack_messages():
     """Render a text area for the user to input recent Slack messages."""
-    return st.text_area("Slack to respond to:", "")
+    return st.text_area("Enter query:", "")
 
 
 def render_summary_button():
@@ -29,6 +29,7 @@ def generate_slack_message(model, role, messages):
 
 def main():
     """Main function for the Slack Response page."""
+    st.title("Slack Response")
     slack_messages = render_slack_messages()  # Get the recent Slack messages
     st.write("---")
 

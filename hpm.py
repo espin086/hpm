@@ -8,11 +8,8 @@ from settings import main as settings_main
 
 page = st.sidebar.title("Navigation")
 page = st.sidebar.radio(
-    "Go to", ["Settings", "Weekly Updates", "Daily Updates", "Emails", "Slack Response"]
+    "Go to", ["Weekly Updates", "Daily Updates", "Emails", "Slack Response"]
 )
-
-if page == "Settings":
-    settings_main()
 
 
 if page == "Weekly Updates":

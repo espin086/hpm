@@ -39,25 +39,24 @@ def render_summary_button():
 
 
 def write_email(model, role, prompts):
+    """Generate an email based on the input prompts."""
     return generate_completion(model, role, prompts)
 
 
 def main():
-    user_role = render_role_input()  # Get the user's selected role
-    render_title(user_role)  # Pass the user's role to the title function
+    """Main function for the Email Writer page."""
 
-    st.header("Recipient Name")
+    st.header("TO:")
     email_to = render_text_area("To", "Enter the recipient's name.")
-    st.header("How are they? (Boss, colleague, etc.)")
-    email_to_role = render_text_area("How are they?", "Boss, colleague, etc.")
-    st.header("What's Your Name")
-    email_from = render_text_area("From", "Enter your name.")
-    st.header("What do you want to say? (Notes)")
+
+    email_from = config.UserConfig().name
+    st.header("Body:")
+
     email_input = render_text_area("What do you want to say?", "Enter your notes")
     st.write("---")
 
     prompt = f"""
-    Write a professional email to {email_to} ({email_to_role}) from {email_from} about {email_input}.
+    Write a professional email to {email_to} from {email_from} (myself) about {email_input}. Recall you work at {config.UserConfig().company} and you are a {config.UserConfig().job_title}.
     
     You will want to structure your response like this:
 
@@ -67,14 +66,14 @@ def main():
 
     here you will write the body of your email, you will use bold and bullet points to hit the key points of your email.
 
-    Note: Please don't write Dear{email_to}, that's awkward. Instead, just write {email_to}.
+    Note: Please don't write Dear {email_to}, that's awkward. Instead, just write {email_to}, .
     
     Style Guide: Used bold and bullet points to hit the key points of your email.
 
     """
 
     if render_summary_button():
-        summary = write_email(config.GPT_MODEL, user_role, prompt)
+        summary = write_email(config.GPT_MODEL, config.UserConfig().job_title, prompt)
         st.write(summary)
 
 

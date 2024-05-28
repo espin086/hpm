@@ -1,8 +1,7 @@
 import streamlit as st
 
 from gpt import generate_completion
-
-MODEL = "gpt-3.5-turbo"
+import config
 
 
 def render_title(role):
@@ -75,7 +74,7 @@ def main():
     """
 
     if render_summary_button():
-        summary = write_email(MODEL, user_role, prompt)
+        summary = write_email(config.GPT_MODEL, user_role, prompt)
         st.write(summary)
 
 

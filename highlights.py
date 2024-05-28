@@ -5,7 +5,7 @@ import streamlit as st
 
 from gpt import generate_completion
 
-MODEL = "gpt-3.5-turbo"
+import config
 
 HOW_TO_SUMMARIZE = """You need to summarize your accomplishments, challenges, and next steps.
 The audience are peer and managers who are interested in your work.
@@ -95,7 +95,7 @@ def main():
     )
 
     if render_summary_button():
-        summary = get_summary(MODEL, user_role, prompt)
+        summary = get_summary(config.GPT_MODEL, user_role, prompt)
         st.write(summary)
 
 

@@ -2,7 +2,7 @@ import streamlit as st
 
 from gpt import generate_completion
 
-MODEL = "gpt-3.5-turbo"
+import config
 
 
 def render_title(role):
@@ -56,7 +56,7 @@ def main():
     Response:"""
 
     if render_summary_button():
-        response = generate_slack_message(MODEL, user_role, prompt)
+        response = generate_slack_message(config.GPT_MODEL, user_role, prompt)
         st.write(response)
 
 

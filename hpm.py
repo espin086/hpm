@@ -4,11 +4,16 @@ from chat_response import main as chat_response_main
 from daily_standup import main as daily_standup_main
 from highlights import main as highlights_main
 from write_email import main as email
+from settings import main as settings_main
 
 page = st.sidebar.title("Navigation")
 page = st.sidebar.radio(
-    "Go to", ["Weekly Updates", "Daily Updates", "Emails", "Slack Response"]
+    "Go to", ["Settings", "Weekly Updates", "Daily Updates", "Emails", "Slack Response"]
 )
+
+if page == "Settings":
+    settings_main()
+
 
 if page == "Weekly Updates":
     highlights_main()

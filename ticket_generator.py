@@ -5,25 +5,19 @@ from gpt import generate_completion
 import config
 
 
-HOW_TO_SUMMARIZE = """ You need to provide an update for a daily stand-up. 
-This update should be no longer than 15 minutes in the agile/scrum methodology.
+HOW_TO_SUMMARIZE = """ You need to provide an create a ticket for a jira/rally ticketing system. 
 
-It should accomplish the following:
 
-- show how busy you are
-- show what you are working on
-- show what you have accomplished
-- show what you are planning to do next
-- show what you need help with
+
+It should outline the ask, the scope, the acceptance criteria, and any blockers.:
+
 
 Formatting Guide:
 
-- your response will be in three sections: accomplishments, plans, blockers
 - use bold for the section headers
 - use bullet points for each section
+- You need to list out a set of steps as a checklist to complete the ticket as well.
 - start each bullet point with a verb and use the present tense, plus use the active voice and bold the verb
-
-Example: Joined mutliple table and quality checked the ETL pipeline to ensure the data is accurate and complete.
 
 """
 
@@ -47,7 +41,7 @@ def render_summary_button():
     Returns:
         bool: True if the button is clicked, False otherwise.
     """
-    return st.button("Summarize", key="btn_summarize")
+    return st.button("Write Ticket", key="btn_summarize")
 
 
 def get_summary(model, role, prompt):
@@ -67,28 +61,23 @@ def get_summary(model, role, prompt):
 def main():
     """Main function to render the Streamlit app."""
 
-    st.header("What did you do today?")
-    accomplishments_input = render_text_area(
-        "What did you do today?", "Enter your daily accomplishments."
+    st.header("Goal")
+    feature_input = render_text_area(
+        "What do you want a story for?",
+        "What is the specific issue or feature that needs to be addressed in this ticket?",
     )
     st.write("---")
 
-    st.header("What will you do tomorrow?")
-    todo_input = render_text_area(
-        "What will you do tomorrow?", "Enter tomorrow's plans"
-    )
-    st.write("---")
-
-    st.header("Any challenges/blockers for you?")
-    blocked_input = render_text_area(
-        "What is blocking you?", "What stands in your way?"
+    st.header("Acceptance Criteria")
+    acceptance_input = render_text_area(
+        "Acceptance Criteria?",
+        "What is the expected outcome or desired functionality after the resolution of this ticket?",
     )
     st.write("---")
 
     prompt = f"""Here is your task {HOW_TO_SUMMARIZE}. 
-    Here are the accomplishments: {accomplishments_input}. 
-    Here are the plans for tomorrow: {todo_input}. 
-    Here are the blockers: {blocked_input}
+    Ticket Description: {feature_input}. 
+    Acceptance Criteria: {acceptance_input}.
     """
 
     if render_summary_button():

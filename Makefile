@@ -24,3 +24,6 @@ isort:
 
 # All-in-one command to run all checks
 all: setup isort black-it pylint pytest
+
+run:
+	streamlit run hpm.py

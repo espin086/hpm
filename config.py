@@ -1,4 +1,4 @@
-GPT_MODEL = "gpt-4"
+GPT_MODEL = "gpt-4o"
 
 
 class UserConfig:
@@ -6,5 +6,5 @@ class UserConfig:
 
     def __init__(self):
         self.name = "JJ Espinoza"
-        self.job_title = "Decision Science Analyst Lead"
-        self.company = "USAA"
+        self.job_title = "Data Scientist"
+        self.company = "Keller Williams"

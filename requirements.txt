@@ -2,3 +2,4 @@ openai==0.27.1
 streamlit==1.25.0
 pytest-mock==3.5.1
 ydata-profiling
+plotly

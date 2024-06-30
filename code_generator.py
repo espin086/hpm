@@ -104,7 +104,7 @@ def get_summary(model: str, role: str, prompt: str) -> str:
 
 class CodeGeneratorApp:
     def __init__(self):
-        st.set_page_config(page_title="Code Generator App", layout="centered")
+        # st.set_page_config(page_title="Code Generator App", layout="centered")
         self.zip_buffer = BytesIO()  # Make zip_buffer an instance variable
         self.display_ui()
 

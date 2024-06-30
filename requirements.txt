@@ -3,3 +3,4 @@ streamlit==1.25.0
 pytest-mock==3.5.1
 ydata-profiling
 plotly
+google-cloud-bigquery
